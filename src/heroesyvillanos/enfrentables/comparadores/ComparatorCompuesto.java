@@ -1,5 +1,6 @@
 package heroesyvillanos.enfrentables.comparadores;
 
+import java.io.InvalidObjectException;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,11 +20,20 @@ public class ComparatorCompuesto implements Comparator<Enfrentable> {
 	}
 	
 	public boolean addComparator(Comparator<Enfrentable> c) {
-		return comparators.add(c);
+		try {
+			if(c == this)
+				throw new InvalidObjectException("Intento agregar un comparador a si mismo");
+			comparators.add(c);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 	
 	public boolean addComparator(Comparator<Enfrentable> c, int index) {
 		try {
+			if(c == this)
+				throw new InvalidObjectException("Intento agregar un comparador a si mismo");
 			comparators.add(index, c);
 		}catch (Exception e) {
 			return false;
