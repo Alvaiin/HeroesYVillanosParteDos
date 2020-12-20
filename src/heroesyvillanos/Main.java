@@ -7,6 +7,7 @@ import heroesyvillanos.Juego;
 import heroesyvillanos.enfrentables.Enfrentable;
 import heroesyvillanos.enfrentables.Liga;
 import heroesyvillanos.enfrentables.Personaje;
+import heroesyvillanos.enfrentables.atributos.AtributoCondicional;
 import heroesyvillanos.enfrentables.atributos.AtributoOperacionDivision;
 import heroesyvillanos.enfrentables.atributos.AtributoSimple;
 import heroesyvillanos.enfrentables.comparadores.ComparatorCompuesto;
@@ -19,6 +20,8 @@ public class Main {
 		pj1.addAtributo("Fuerza", new AtributoSimple(110));
 		pj1.addAtributo("Velocidad", new AtributoSimple(80));
 		pj1.addAtributo("Resistencia", new AtributoOperacionDivision("Fuerza", "Velocidad"));
+		pj1.addAtributo("Invisibilidad", new AtributoSimple(100));
+		pj1.addAtributo("Camuflaje",new AtributoCondicional("Invisibilidad", "Fuerza", new AtributoSimple(50), new AtributoSimple(pj1.getValorAtributo("Velocidad"))));
 		
 		Personaje pj2 = new Personaje("Personaje 2", "PJ2");
 		pj2.addAtributo("Fuerza", new AtributoSimple(101));
