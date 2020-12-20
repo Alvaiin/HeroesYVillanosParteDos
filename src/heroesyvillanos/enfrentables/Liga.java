@@ -20,6 +20,8 @@ public class Liga extends Enfrentable {
 	}
 	
 	public Boolean addIntegrante(Enfrentable e) {
+		if(e == this)
+			return false;
 		return integrantes.add(e);
 	}
 	
